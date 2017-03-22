@@ -6,6 +6,7 @@ module VideoGrabber
     end
 
     def call
+      scraper = Scraper.new(config.url, config.timeout, config.keep_browser_open).start
     end
 
     private

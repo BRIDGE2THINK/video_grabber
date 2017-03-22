@@ -22,7 +22,11 @@ module VideoGrabber
 
   class Configuration
 
-    attr_accessor :url
+    attr_accessor :url, :keep_browser_open, :timeout
 
+    def initialize
+      @keep_browser_open = false
+      @timeout           = 60
+    end
   end
 end

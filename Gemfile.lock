@@ -3,6 +3,7 @@ PATH
   specs:
     video_grabber (0.0.1)
       headless
+      nokogiri
       selenium-webdriver
       watir
 
@@ -17,6 +18,11 @@ GEM
     ffi (1.9.14)
     headless (2.2.3)
     method_source (0.8.2)
+    mini_portile2 (2.1.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    pkg-config (1.1.7)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
