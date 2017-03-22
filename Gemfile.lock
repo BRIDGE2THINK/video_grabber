@@ -1,0 +1,62 @@
+PATH
+  remote: .
+  specs:
+    video_grabber (0.0.1)
+      headless
+      selenium-webdriver
+      watir
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.1)
+    commonwatir (4.0.0)
+    diff-lcs (1.2.5)
+    ffi (1.9.14)
+    headless (2.2.3)
+    method_source (0.8.2)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rake (10.5.0)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    slop (3.6.0)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.11)
+  pry
+  rake (~> 10.0)
+  rspec (~> 3.0)
+  video_grabber!
+
+BUNDLED WITH
+   1.12.5
