@@ -6,6 +6,7 @@ require 'selenium-webdriver'
 require 'headless'
 require 'nokogiri'
 require 'watir'
+require 'cgi'
 require 'pry'
 
 module VideoGrabber
