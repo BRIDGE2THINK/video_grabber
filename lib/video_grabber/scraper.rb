@@ -27,6 +27,7 @@ module VideoGrabber
     def fetch_videos
       links_list = []
       links_list += browser.videos.map(&:html)
+
       links_list += ::Nokogiri::HTML(browser.html).xpath('//iframe').map do |iframe_node|
         ::Nokogiri::HTML(::CGI.unescapeHTML(iframe_node.to_s)).xpath('.//video').map{ |element| element.to_s }
       end.flatten
