@@ -13,16 +13,20 @@ gem 'video_grabber'
 
 And then execute:
 
-    $ bundle
-
+```shell
+$ bundle
+```
 Or install it yourself as:
 
-    $ gem install video_grabber
-
+```ruby
+$ gem install video_grabber
+```
 And require it in your application:
 
-    irb(main):001:0> require 'video_grabber'
-    => true
+```ruby
+irb(main):001:0> require 'video_grabber'
+=> true
+```
 
 ## Requirements
 
@@ -30,7 +34,9 @@ And require it in your application:
 
 Install `xvfb` on Debian:
 
-    sudo apt-get install xvfb
+```shell
+sudo apt-get install xvfb
+```
 
 Headless is used to run Firefox inside a headless display (in background).
 
@@ -39,18 +45,23 @@ Headless is used to run Firefox inside a headless display (in background).
 
 Start the Scraper
 
-    video_grabber = VideoGrabber.new(url: 'https://en.wikipedia.org/wiki/Big_Buck_Bunny').call
-
+```ruby
+video_grabber = VideoGrabber.new(url: 'https://en.wikipedia.org/wiki/Big_Buck_Bunny').call
+```
 Fetch your links and shut down your scraper:
 
-    video_grabber.fetch_videos
-    => ["<video  id=\"mwe_player_1\" poster=\"//upload.wikimedia.org/wikipedia/com...
+```ruby
+video_grabber.fetch_videos
+=> ["<video  id=\"mwe_player_1\" poster=\"//upload.wikimedia.org/wikipedia/com...
+```
 
-If you keep to use the scraper current session, you can manually restart the service using:
+If you want to fetch a new time those data, you can manually restart the service using:
 
-    video_grabber.start
+```ruby
+video_grabber.start
+```
 
-Or you can directly path the option param `keep_browser_open` during initialization.
+Or you can directly pass the param `keep_browser_open` during initialization.
 
 ## Parameters
 
@@ -75,10 +86,10 @@ __Video Grabber__ follows [Semantic Versioning 2.0](http://semver.org/).
 ## Contact
 
 Any question ? Feel free to contact me at `contact(at)sidney.email` .
-Any issue ? Open a [ticket](https://github.com/shideneyu/video_grabber/issues) !
+Any issue ? Open a [ticket](https://github.com/bridge2think/video_grabber/issues) !
 
 ## License
 
 Copyright (c) 2017 Bridge2Think AG
 
-Released under the MIT license. See [LICENSE.md](https://github.com/shideneyu/video_grabber/blob/master/LICENSE.md) for more details.
+Released under the MIT license. See [LICENSE.md](https://github.com/bridge2think/video_grabber/blob/master/LICENSE.md) for more details.
