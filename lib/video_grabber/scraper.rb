@@ -30,7 +30,8 @@ module VideoGrabber
       links_list += ::Nokogiri::HTML(browser.html).xpath('//iframe').map do |iframe_node|
         ::Nokogiri::HTML(::CGI.unescapeHTML(iframe_node.to_s)).xpath('.//video').map{ |element| element.to_s }
       end.flatten
-      link_list += begin
+
+      links_list += begin
         html = ::CGI.unescapeHTML(browser.html)
         html = html.split('<video').map{|e| '<video ' + e if e.match('</video>')}.compact
         html = html.map{|e| e.split('</video>')[0..-2].join('</video>') + '</video>' }
@@ -38,7 +39,7 @@ module VideoGrabber
 
       stop unless keep_browser_open
 
-      links_list.reject(&:empty?).unique
+      links_list.reject(&:empty?).uniq
     rescue ::Watir::Exception::Error
       raise ::VideoGrabber::BrowserIsClosed, 'Please restart the scraper (scraper_instance.start), or keep the browser open'
     end
