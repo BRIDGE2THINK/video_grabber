@@ -6,7 +6,8 @@ module VideoGrabber
     end
 
     def call
-      scraper = Scraper.new(config.url, config.timeout, config.keep_browser_open, config.headless_enabled).start
+      scraper = Scraper.new(config.url, config.timeout, config.keep_browser_open,
+                            config.headless_enabled, config.firefox_extension_path).start
     end
 
     private
