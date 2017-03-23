@@ -12,7 +12,7 @@ module VideoGrabber
   #
   # example:
   #   VideoGrabber.configure do |config|
-  #     config.depth = 3
+  #     config.timeout = 60
   #   end
   #
   # @return [void]
