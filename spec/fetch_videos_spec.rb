@@ -11,4 +11,9 @@ describe ::VideoGrabber do
     video_graber = VideoGrabber.new(url: absolute_path + 'iframe_embedded_video.html').call
     expect(video_graber.fetch_videos).to eq(["<video src=\"iframe.mp4\"></video>"])
   end
+
+  it 'gets the right size for the links' do
+    video_graber = VideoGrabber.new(url: absolute_path + 'iframe_embedded_video.html', attributes: {style: 'width: 200px;'}).call
+    expect(video_graber.fetch_videos).to eq(["<video src=\"iframe.mp4\" style=\"width: 200px;\"/>"])
+  end
 end

@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name                  = 'video_grabber'
   spec.version               = VideoGrabber::VERSION
   spec.authors               = ['sidney']
-  spec.email                 = ['contact@sidney.email']
+  spec.email                 = ['ss@bridge2think.com']
   spec.summary               = 'VideoGrabber is a simple tool to get video tags from a given URL'
   spec.description           = 'VideoGrabber crawl headlessly websites to extract their videos'
-  spec.homepage              = 'https://github.com/shideneyu/video_grabber'
+  spec.homepage              = 'https://github.com/bridge2think/video_grabber'
   spec.license               = 'MIT'
   spec.required_ruby_version = '>= 1.9.3'
 

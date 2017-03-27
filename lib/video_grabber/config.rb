@@ -5,7 +5,7 @@ module VideoGrabber
   # @return [VideoGrabber::Configuration] a configuration instance.
   def self.config
     @config ||= Configuration.new
-  end   
+  end
 
   # Configure hook used in the gem initializer. Convinient way to set all the
   # gem configurations.
@@ -22,7 +22,8 @@ module VideoGrabber
 
   class Configuration
 
-    attr_accessor :url, :keep_browser_open, :timeout, :headless_enabled, :firefox_extension_path
+    attr_accessor :url, :keep_browser_open, :timeout, :headless_enabled,
+                  :firefox_extension_path, :attributes
 
     def initialize
       @keep_browser_open = false

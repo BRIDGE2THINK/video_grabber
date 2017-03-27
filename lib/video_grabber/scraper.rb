@@ -2,14 +2,15 @@ module VideoGrabber
   class Scraper
 
     attr_reader :url, :browser, :timeout, :keep_browser_open, :headless_enabled,
-                :firefox_extension_path, :profile
+                :firefox_extension_path, :profile, :attributes
 
-    def initialize(url, timeout, keep_browser_open, headless_enabled, firefox_extension_path)
-      @keep_browser_open      = keep_browser_open
-      @url                    = url
-      @timeout                = timeout
-      @headless_enabled       = headless_enabled
-      @firefox_extension_path = firefox_extension_path
+    def initialize(config)
+      @keep_browser_open      = config.keep_browser_open
+      @url                    = config.url
+      @timeout                = config.timeout
+      @headless_enabled       = config.headless_enabled
+      @firefox_extension_path = config.firefox_extension_path
+      @attributes             = config.attributes
     end
 
     def start
@@ -40,7 +41,9 @@ module VideoGrabber
 
       stop unless keep_browser_open
 
-      links_list.reject(&:empty?).uniq
+      links_list = links_list.map{|element| element.split.join(" ") }.reject(&:empty?).uniq
+
+      add_attributes(links_list) || links_list
     rescue ::Watir::Exception::Error
       raise ::VideoGrabber::BrowserIsClosed, 'Please restart the scraper (scraper_instance.start), or keep the browser open'
     end
@@ -68,6 +71,21 @@ module VideoGrabber
       @profile.add_extension(firefox_extension_path)
     rescue Selenium::WebDriver::Error::WebDriverError => e
       raise ::VideoGrabber::ExtensionError, e
+    end
+
+    def add_attributes(list)
+      return unless attributes
+
+      list.map do |element|
+
+        parsed_element = Nokogiri::XML(element)
+
+        attributes.each do |key, value|
+          parsed_element.xpath('//video').first.set_attribute(key, value)
+        end
+
+        parsed_element.xpath('//video').to_s
+      end
     end
   end
 end

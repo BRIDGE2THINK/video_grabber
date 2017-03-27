@@ -69,6 +69,7 @@ Or you can directly pass the param `keep_browser_open` during initialization.
  -  **timeout:**  *(default: 60)* The timeout for the scraper. Will trigger a `VideoGrabber::Timeout` if the delay is met.
  - **keep_browser_open** *(default: false)* If activated, will keep the scraper's browser open as long as you do not stop it (using the `stop` public method.). 
  - **headless_enabled** *(default: true)* If disabled, will open your Firefox browser to crawl your links.
+- **attributes** This option enables you to pass html attributes that will be passed to your crawled links elements.
  - **firefox_extension_path** If passed, your Scraper instance will run using the given extension (`.xpi` file). Useful if you want to benefit from an Adblocker for instance
 
 ## Versioning
@@ -85,7 +86,7 @@ __Video Grabber__ follows [Semantic Versioning 2.0](http://semver.org/).
 
 ## Contact
 
-Any question ? Feel free to contact me at `contact(at)sidney.email` .
+Any question ? Feel free to contact me at `ss(at)bridge2think.com` .
 Any issue ? Open a [ticket](https://github.com/bridge2think/video_grabber/issues) !
 
 ## License
