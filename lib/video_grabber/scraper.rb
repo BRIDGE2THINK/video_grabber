@@ -2,7 +2,7 @@ module VideoGrabber
   class Scraper
 
     attr_reader :url, :browser, :timeout, :keep_browser_open, :headless_enabled,
-                :firefox_extension_path, :profile, :attributes
+                :firefox_extension_path, :profile, :html_attributes
 
     def initialize(config)
       @keep_browser_open      = config.keep_browser_open
@@ -10,7 +10,7 @@ module VideoGrabber
       @timeout                = config.timeout
       @headless_enabled       = config.headless_enabled
       @firefox_extension_path = config.firefox_extension_path
-      @attributes             = config.attributes
+      @html_attributes        = config.html_attributes
     end
 
     def start
@@ -74,13 +74,13 @@ module VideoGrabber
     end
 
     def add_attributes(list)
-      return unless attributes
+      return unless html_attributes
 
       list.map do |element|
 
         parsed_element = Nokogiri::XML(element)
 
-        attributes.each do |key, value|
+        html_attributes.each do |key, value|
           parsed_element.xpath('//video').first.set_attribute(key, value)
         end
 
