@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    video_grabber (1.8.0)
+    video_grabber (1.9)
       headless
       nokogiri
       phantomjs
       pry
-      selenium-webdriver
+      selenium-webdriver (~> 2.53.4)
       watir
 
 GEM

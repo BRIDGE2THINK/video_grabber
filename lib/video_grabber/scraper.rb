@@ -1,8 +1,8 @@
 module VideoGrabber
   class Scraper
 
-    attr_reader :url, :browser, :timeout, :keep_browser_open, :headless_enabled,
-                :firefox_extension_path, :profile, :html_attributes, :browser_type
+    attr_reader :url, :browser, :timeout, :keep_browser_open, :headless_enabled, :browser_parameters,
+                :firefox_extension_path, :html_attributes, :browser_type
 
     def initialize(config)
       @keep_browser_open      = config.keep_browser_open
@@ -12,6 +12,7 @@ module VideoGrabber
       @firefox_extension_path = config.firefox_extension_path
       @html_attributes        = config.html_attributes
       @browser_type           = config.browser
+      @browser_parameters     = { http_client: browser_http_client }
     end
 
     def start
@@ -51,13 +52,18 @@ module VideoGrabber
 
   private
 
+    def browser_http_client
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = timeout
+
+      client
+    end
+
     def open_browser
       start_headless
+      load_extension
 
-      @profile       = ::Selenium::WebDriver::Firefox::Profile.new && load_extension if firefox_extension_path
-      client         = Selenium::WebDriver::Remote::Http::Default.new
-      client.timeout = timeout
-      @browser       = ::Watir::Browser.new(browser_type, profile: profile, http_client: client)
+      @browser = ::Watir::Browser.new(browser_type, browser_parameters)
     end
 
     def start_headless
@@ -69,7 +75,10 @@ module VideoGrabber
     def load_extension
       return unless firefox_extension_path
 
-      @profile.add_extension(firefox_extension_path)
+      profile = ::Selenium::WebDriver::Firefox::Profile.new
+      profile.add_extension(firefox_extension_path)
+
+      @browser_parameters[:profile] = @profile
     rescue Selenium::WebDriver::Error::WebDriverError => e
       raise ::VideoGrabber::ExtensionError, e
     end
