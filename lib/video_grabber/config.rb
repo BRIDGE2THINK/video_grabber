@@ -23,13 +23,14 @@ module VideoGrabber
   class Configuration
 
     attr_accessor :url, :keep_browser_open, :timeout, :headless_enabled,
-                  :firefox_extension_path, :html_attributes
+                  :firefox_extension_path, :html_attributes, :browser
 
     def initialize
       @keep_browser_open = false
       @timeout           = 60
       @headless_enabled  = true
       @html_attributes   = { controls: true }
+      @browser           = :firefox
     end
   end
 end

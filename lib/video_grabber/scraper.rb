@@ -2,7 +2,7 @@ module VideoGrabber
   class Scraper
 
     attr_reader :url, :browser, :timeout, :keep_browser_open, :headless_enabled,
-                :firefox_extension_path, :profile, :html_attributes
+                :firefox_extension_path, :profile, :html_attributes, :browser_type
 
     def initialize(config)
       @keep_browser_open      = config.keep_browser_open
@@ -11,6 +11,7 @@ module VideoGrabber
       @headless_enabled       = config.headless_enabled
       @firefox_extension_path = config.firefox_extension_path
       @html_attributes        = config.html_attributes
+      @browser_type           = config.browser
     end
 
     def start
@@ -53,10 +54,10 @@ module VideoGrabber
     def open_browser
       start_headless
 
-      @profile       = ::Selenium::WebDriver::Firefox::Profile.new ; load_extension
+      @profile       = ::Selenium::WebDriver::Firefox::Profile.new && load_extension if firefox_extension_path
       client         = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = timeout
-      @browser       = ::Watir::Browser.new(:firefox, profile: profile, http_client: client)
+      @browser       = ::Watir::Browser.new(browser_type, profile: profile, http_client: client)
     end
 
     def start_headless

@@ -30,7 +30,7 @@ irb(main):001:0> require 'video_grabber'
 
 ## Requirements
 
-`video_grabber` relies on Firefox and [Headless](https://github.com/leonid-shevtsov/headless) (unless you specifically disable it). To get Headless working you will need linux and `xvfb`.
+If you plan to use Firefox as your browser, `video_grabber` will then rely on [Headless](https://github.com/leonid-shevtsov/headless) (unless you specifically disable it). To get Headless working you will need linux and `xvfb`.
 
 Install `xvfb` on Debian:
 
@@ -68,9 +68,10 @@ Or you can directly pass the param `keep_browser_open` during initialization.
  - **url:** The url of the resource containing the video(s)
  -  **timeout:**  *(default: 60)* The timeout for the scraper. Will trigger a `VideoGrabber::Timeout` if the delay is met.
  - **keep_browser_open** *(default: false)* If activated, will keep the scraper's browser open as long as you do not stop it (using the `stop` public method.). 
- - **headless_enabled** *(default: true)* If disabled, will open your Firefox browser to crawl your links.
+ - **headless_enabled** *(default: true)* If disabled, will open your browser to crawl your links.
+ - **browser** *(default: :firefox)* Set the browser which will be used to browse websites .
 - **html_attributes** *(default: {controls: true})* This option enables you to pass html attributes that will be passed to your crawled links elements.
- - **firefox_extension_path** If passed, your Scraper instance will run using the given extension (`.xpi` file). Useful if you want to benefit from an Adblocker for instance
+ - **firefox_extension_path** If passed, your Scraper instance will run using the given extension (`.xpi` file). Your browser has to be set at Firefox. Useful if you want to benefit from an Adblocker for instance
 
 ## Versioning
 

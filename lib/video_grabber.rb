@@ -7,6 +7,7 @@ require 'headless'
 require 'nokogiri'
 require 'watir'
 require 'cgi'
+require 'phantomjs'
 require 'pry'
 
 module VideoGrabber
