@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.executables   = ['video_grabber']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'selenium-webdriver', '~> 2.53.4'
+  spec.add_dependency 'selenium-webdriver'
   spec.add_dependency 'watir'
   spec.add_dependency 'headless'
   spec.add_dependency 'nokogiri'
